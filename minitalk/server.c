@@ -6,7 +6,7 @@
 
 void	handle_sigusr(int signum)
 {
-	static unsigned int bit = 2147483648;
+	static unsigned int bit = 1048576;
 	static int b = 0;
 	static int sender_pid = 0;
 	static int check = 0;
@@ -25,7 +25,7 @@ void	handle_sigusr(int signum)
 		}
 		else
 			write(1, &b, 1);
-		bit = 2147483648;
+		bit = 1048576;
 		b = 0;
 	}
 }
@@ -39,4 +39,5 @@ int	main(int argc, char **argv)
 	{
 		pause();
 	}
+	return (0);
 }

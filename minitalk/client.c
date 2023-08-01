@@ -23,7 +23,7 @@ void sendnumber(int a, int pid)
 {
 	int b;
 
-	b = 31;
+	b = 20;
 	while (b >= 0)
 	{
 		if (checkbit(a, b) == 0)
