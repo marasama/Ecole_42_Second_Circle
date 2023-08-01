@@ -4,43 +4,39 @@
 #include <string.h>
 #include <unistd.h>
 
-int bit = 0;
-int a = 0;
-
-void handle_usr2(int signum);
-
-void handle_usr1(int signum)
+void	handle_sigusr(int signum)
 {
-	signal(SIGUSR1, handle_usr1);
-	signal(SIGUSR2, handle_usr2);
-	bit <<= 1;
-	usleep(100000);
-	a = 1;
-}
+	static unsigned int bit = 2147483648;
+	static int b = 0;
+	static int sender_pid = 0;
+	static int check = 0;
 
-void handle_usr2(int signum)
-{
-	signal(SIGUSR1, handle_usr1);
-	signal(SIGUSR2, handle_usr2);
-	bit = (bit << 1) | 1;
-	usleep(100000);
-	a = 1;
+	if (signum == SIGUSR2)	
+		b += bit;
+	bit /= 2;
+	if (check == 1)
+		kill(sender_pid, SIGUSR1);
+	if (bit == 0)
+	{
+		if (sender_pid == 0)
+		{
+			sender_pid = b;
+			check = 1;
+		}
+		else
+			write(1, &b, 1);
+		bit = 2147483648;
+		b = 0;
+	}
 }
 
 int	main(int argc, char **argv)
 {
-	signal(SIGUSR1, handle_usr1);
-	signal(SIGUSR2, handle_usr2);
+	signal(SIGUSR1, handle_sigusr);
+	signal(SIGUSR2, handle_sigusr);
 	printf("%d\n", getpid());
 	while (1)
 	{
-		if (a == 1)
-		{
-			printf("%c", bit);
-			bit = 0;
-			a = 0;
-		}
-		printf("...\n");
-		sleep(3);
+		pause();
 	}
 }
