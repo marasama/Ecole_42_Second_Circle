@@ -1,6 +1,16 @@
-#include <stdlib.h>
-#include <signal.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/02 21:10:21 by adurusoy          #+#    #+#             */
+/*   Updated: 2023/08/02 21:51:49 by adurusoy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minitalk.h"
 
 int	ft_atoi(const char *str)
 {
@@ -30,40 +40,41 @@ int	ft_atoi(const char *str)
 	return (c);
 }
 
-void	ft_putstr(char *s)
-{
-	int		a;
-
-	if (s == NULL)
-	{
-		return ;
-	}
-	a = 0;
-	while (s[a] != 0)
-	{
-		write(1, &s[a++], 1);
-	}
-}
-
-
 void	handle_sigusr(int signum)
 {
-	ft_putstr("Received!\n");
+	static int	a = 0;
+
+	if (signum == SIGUSR1)
+	{
+		if (a == 0)
+		{
+			ft_printf("PID Received\n");
+			a++;
+		}
+		else
+		{
+			ft_printf("%d. Char received!\n", a);
+			a++;
+		}
+	}
 }
 
-int checkbit(int a, int b)
+int	checkbit(int a, int b)
 {
-	int c = 1 << b;
-	int check = a & c;
+	int		c;
+	int		check;
+
+	c = 1 << b;
+	check = a & c;
 	if (check == 0)
-		return 0;
+		return (0);
 	else
 		return (1);
 }
 
-void sendnumber(int a, int pid)
+void	sendnumber(int a, int pid)
 {
-	int b;
+	int		b;
 
 	b = 20;
 	while (b >= 0)
@@ -72,21 +83,30 @@ void sendnumber(int a, int pid)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(1000);
+		usleep(500);
 		b--;
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int pid = ft_atoi(argv[1]);
-	int c = 0;
+	int		pid;
+	int		c;
+
+	if (argc != 3)
+	{
+		ft_printf("Argument number must be 3\n");
+		return (1);
+	}
+	pid = ft_atoi(argv[1]);
+	c = 0;
 	signal(SIGUSR1, handle_sigusr);
 	sendnumber(getpid(), pid);
 	while (argv[2][c])
 	{
 		sendnumber((int)argv[2][c], pid);
-		usleep(1000);
 		c++;
 	}
+	sendnumber(0, pid);
+	return (0);
 }

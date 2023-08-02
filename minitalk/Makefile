@@ -14,6 +14,8 @@ NAME =		minitalk
 
 SV_SRC =	server.c
 
+PRNT_SRC =	./ft_printf/*.c
+
 CL_SRC =	client.c
 
 FLAGS = -Wall -Wextra -Werror
@@ -21,16 +23,16 @@ FLAGS = -Wall -Wextra -Werror
 all:$(NAME)
 
 $(NAME):
-		gcc -o server $(SV_SRC) $(FLAGS)
-		gcc -o client $(CL_SRC) $(FLAGS)
+		gcc -o server $(SV_SRC) $(PRNT_SRC) $(FLAGS)
+		gcc -o client $(CL_SRC) $(PRNT_SRC) $(FLAGS)
 
 clean:
-	rm -f server.out
-	rm -f client.out
+	rm -f server
+	rm -f client
 
 fclean:	clean
-	rm -f server.out
-	rm -f client.out
+	rm -f server
+	rm -f client
 
 re: fclean all
 
