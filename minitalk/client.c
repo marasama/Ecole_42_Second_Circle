@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:10:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/02 21:51:49 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/02 23:16:27 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,12 @@ int	ft_atoi(const char *str)
 
 void	handle_sigusr(int signum)
 {
-	static int	a = 0;
+	static int	a = 1;
 
 	if (signum == SIGUSR1)
 	{
-		if (a == 0)
-		{
-			ft_printf("PID Received\n");
-			a++;
-		}
-		else
-		{
-			ft_printf("%d. Char received!\n", a);
-			a++;
-		}
+		ft_printf("%d. Char received!\n", a);
+		a++;
 	}
 }
 
@@ -105,6 +97,7 @@ int	main(int argc, char **argv)
 	while (argv[2][c])
 	{
 		sendnumber((int)argv[2][c], pid);
+		usleep(250);
 		c++;
 	}
 	sendnumber(0, pid);

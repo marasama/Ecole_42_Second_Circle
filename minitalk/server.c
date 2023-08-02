@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:11:57 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/02 21:51:48 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/02 23:00:10 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	handle_sigusr(int signum)
 		else
 		{
 			write(1, &b, 1);
+			kill(sender_pid, SIGUSR1);
 		}
-		kill(sender_pid, SIGUSR1);
 		bit = 1048576;
 		b = 0;
 	}
