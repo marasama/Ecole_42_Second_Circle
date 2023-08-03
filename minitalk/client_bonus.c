@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:10:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/03 03:50:46 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/03 04:06:32 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	ft_atoi(const char *str)
 {
@@ -40,6 +40,17 @@ int	ft_atoi(const char *str)
 	return (c);
 }
 
+void	handle_sigusr(int signum)
+{
+	static int	a = 1;
+
+	if (signum == SIGUSR1)
+	{
+		ft_printf("%d. Char received!\n", a);
+		a++;
+	}
+}
+
 int	checkbit(int a, int b)
 {
 	int		c;
@@ -57,7 +68,7 @@ void	sendnumber(int a, int pid)
 {
 	int		b;
 
-	b = 7;
+	b = 20;
 	while (b >= 0)
 	{
 		if (checkbit(a, b) == 0)
@@ -74,6 +85,7 @@ int	main(int argc, char **argv)
 	int		pid;
 	int		c;
 
+	signal(SIGUSR1, handle_sigusr);
 	if (argc != 3)
 	{
 		ft_printf("Argument number must be 3\n");
@@ -81,11 +93,13 @@ int	main(int argc, char **argv)
 	}
 	pid = ft_atoi(argv[1]);
 	c = 0;
+	sendnumber(getpid(), pid);
 	while (argv[2][c])
 	{
 		sendnumber((int)argv[2][c], pid);
 		usleep(200);
 		c++;
 	}
+	sendnumber(0, pid);
 	return (0);
 }
