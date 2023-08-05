@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:11:57 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/03 04:06:17 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/04 21:45:27 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(void)
 {
 	signal(SIGUSR1, &handle_sigusr);
 	signal(SIGUSR2, &handle_sigusr);
-	ft_printf("%d\n", getpid());
+	ft_printf("SERVER PID: %d\n", getpid());
 	while (1)
 	{
 		pause();

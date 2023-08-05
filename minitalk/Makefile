@@ -29,8 +29,6 @@ $(NAME):
 clean:
 	rm -f server
 	rm -f client
-	rm -f server_bonus
-	rm -f client_bonus
 
 fclean:	clean
 	rm -f server_bonus

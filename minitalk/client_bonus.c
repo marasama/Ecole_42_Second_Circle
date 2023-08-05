@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:10:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/03 04:06:32 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 03:34:16 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	handle_sigusr(int signum)
 
 	if (signum == SIGUSR1)
 	{
-		ft_printf("%d. Char received!\n", a);
+		ft_printf("%d. Character Received!\n", a);
 		a++;
 	}
 }
@@ -97,7 +97,6 @@ int	main(int argc, char **argv)
 	while (argv[2][c])
 	{
 		sendnumber((int)argv[2][c], pid);
-		usleep(200);
 		c++;
 	}
 	sendnumber(0, pid);

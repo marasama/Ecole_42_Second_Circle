@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 21:10:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/03 03:50:46 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/05 06:28:36 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	checkbit(int a, int b)
 
 void	sendnumber(int a, int pid)
 {
-	int		b;
-
+	int		b;				//  0 0 0 0 0 0 0 0
+							//  1 1 0 1 0 0 0 0
 	b = 7;
 	while (b >= 0)
 	{
@@ -84,7 +84,6 @@ int	main(int argc, char **argv)
 	while (argv[2][c])
 	{
 		sendnumber((int)argv[2][c], pid);
-		usleep(200);
 		c++;
 	}
 	return (0);
