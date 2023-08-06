@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_pf_unint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 14:08:18 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/07 00:25:31 by adurusoy         ###   ########.fr       */
+/*   Created: 2023/03/11 21:41:37 by adurusoy          #+#    #+#             */
+/*   Updated: 2023/05/04 22:14:32 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	ft_atoi(const char *str)
+void	ft_pf_unint(long long a, int *b)
 {
-	int		b;
-	int		c;
-	int		d;
-
-	b = 0;
-	c = 0;
-	d = 0;
-	while (str[b] == 32 || (str[b] <= 13 && str[b] >= 9))
-		b++;
-	if (str[b] == '-' || str[b] == '+')
-	{
-		d = b;
-		b++;
-	}
-	while (str[b] == 48)
-		b++;
-	while (str[b] < 58 && str[b] > 47)
-	{
-		c = (c * 10) + (str[b] - 48);
-		b++;
-	}
-	if (str[d] == '-')
-		c = -c;
-	return (c);
+	if (a < 0)
+		a = 4294967295 + a;
+	ft_pf_int(a, b);
 }

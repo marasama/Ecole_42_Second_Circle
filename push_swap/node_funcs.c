@@ -1,41 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   node_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 14:08:18 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/07 00:25:31 by adurusoy         ###   ########.fr       */
+/*   Created: 2023/08/07 01:35:34 by adurusoy          #+#    #+#             */
+/*   Updated: 2023/08/07 01:59:55 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+void	node_maker(t_num_node **a, int b)
 {
-	int		b;
-	int		c;
-	int		d;
+	t_num_node	*c;
 
-	b = 0;
-	c = 0;
-	d = 0;
-	while (str[b] == 32 || (str[b] <= 13 && str[b] >= 9))
-		b++;
-	if (str[b] == '-' || str[b] == '+')
+	c = (t_num_node *)malloc(sizeof(t_num_node));
+	c->num = b;
+	c->next = *a;
+	c->prev = NULL;
+	if (a != NULL)
+		(*a)->prev = c;
+	*a = c;
+}
+
+void	free_node(t_num_node **a, int b)
+{
+	t_num_node *c;
+
+	if (b == 1)
 	{
-		d = b;
-		b++;
+		c = *a;
+		*a = (*a)->next;
+		free (c);
 	}
-	while (str[b] == 48)
-		b++;
-	while (str[b] < 58 && str[b] > 47)
+	else
 	{
-		c = (c * 10) + (str[b] - 48);
-		b++;
+		while ((*a) != NULL)
+		{
+			c = *a;
+			*a = (*a)->next;
+			free(c);
+		}
 	}
-	if (str[d] == '-')
-		c = -c;
-	return (c);
 }
