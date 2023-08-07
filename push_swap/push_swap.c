@@ -6,11 +6,17 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:31:46 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/07 02:18:11 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/07 05:32:59 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	check_error(void)
+{
+	ft_printf("Error\n");
+	exit(1);
+}
 
 int	atoi_check(char *s)
 {
@@ -42,13 +48,13 @@ int	check_int(char **a)
 		if (a[b][0] != '+' && a[b][0] != '-' && c > 11)
 			return (0);
 		if (a[b][0] == '+' && d == 11)
-			if ((ft_strncmp(a[b], "+2147483647"), d) < 0)
+			if (ft_strncmp(a[b], "+2147483647", d) < 0)
 				return (0);
 		if ((a[b][0] == '-' && d == 11))
-			if ((ft_strncmp(a[b], "-2147483648"), d) < 0)
+			if (ft_strncmp(a[b], "-2147483648", d) < 0)
 				return (0);
 		if (a[b][0] != '+' && a[b][0] != '-' && d == 10)
-			if ((ft_strncmp(a[b], "2147483647"), d) < 0)
+			if (ft_strncmp(a[b], "2147483647", d) < 0)
 				return (0);
 		b++;
 	}
@@ -57,36 +63,46 @@ int	check_int(char **a)
 
 int	check_sort_rpt(t_num_node *a)
 {
-	t_num_node	*tmp;
+	t_num_node	*first;
+	t_num_node	*second;
 	int			b;
 
-	tmp = a;
-	b = tmp->num;
-	while (tmp->next != NULL)
+	first = a;
+	b = first->num;
+	while (first->next != NULL)
 	{
-		if (a->num)
+		second = first->next;
+		while (second != NULL)
+		{
+			if (second->num <= b || second->num == b)
+				return (1);
+			second = second->next;
+		}
+		first = first->next;
 	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	int			a;
+	int			c;
+	t_num_node	*a;
 	t_num_node	*b;
 
+	if (argc == 1)
+		check_error();
+	a = NULL;
 	b = NULL;
 	if (!check_int(argv))
+		check_error();
+	c = 1;
+	while (argv[c])
+		node_maker(&a, ft_atoi(argv[c++]));
+	if (check_sort_rpt(a))
 	{
-		ft_printf("Error\n");
-		return (-1);
+		free_node(&a, 2);
+		check_error();
 	}
-	a = 1;
-	while(argv[a])
-		node_maker(&b, ft_atoi(argv[a++]));
-	if (check_sort_rpt(b))
-	{
-		free_node(&b, 2);
-		ft_printf("Error\n");
-		return (-1);
-	}
-
+	start_sorting(&a, &b);
+	return (0);
 }
