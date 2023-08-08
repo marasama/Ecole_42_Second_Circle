@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 04:55:43 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/07 06:10:01 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/09 00:17:07 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct t_num_node
 //node functions
 void	node_maker(t_num_node **a, int b);
 void	free_node(t_num_node **a, int b);
+int		node_count(t_num_node **a);
+int		find_min_node(t_num_node **a);
 //operation functions
 void	sa(t_num_node **a);
 void	sb(t_num_node **b);

@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:31:46 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/07 05:32:59 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/08 22:21:47 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,36 @@ int	check_int(char **a)
 	return (1);
 }
 
-int	check_sort_rpt(t_num_node *a)
+int	check_sort(t_num_node **a)
+{
+	t_num_node	*b;
+
+	b = *a;
+	if ((b->next) == NULL)
+		return (1);
+	else if (b->num < b->next->num)
+	{
+		b = b->next;
+		return (check_sort(&b));
+	}
+	else
+		return (0);
+}
+
+int	check_rpt(t_num_node **a)
 {
 	t_num_node	*first;
 	t_num_node	*second;
 	int			b;
 
-	first = a;
+	first = *a;
 	b = first->num;
 	while (first->next != NULL)
 	{
 		second = first->next;
 		while (second != NULL)
 		{
-			if (second->num <= b || second->num == b)
+			if (second->num == b)
 				return (1);
 			second = second->next;
 		}
@@ -85,7 +101,6 @@ int	check_sort_rpt(t_num_node *a)
 
 int	main(int argc, char **argv)
 {
-	int			c;
 	t_num_node	*a;
 	t_num_node	*b;
 
@@ -93,12 +108,12 @@ int	main(int argc, char **argv)
 		check_error();
 	a = NULL;
 	b = NULL;
+	argc--;
 	if (!check_int(argv))
 		check_error();
-	c = 1;
-	while (argv[c])
-		node_maker(&a, ft_atoi(argv[c++]));
-	if (check_sort_rpt(a))
+	while (argc > 0)
+		node_maker(&a, ft_atoi(argv[argc--]));
+	if (check_rpt(&a) || check_sort(&a))
 	{
 		free_node(&a, 2);
 		check_error();

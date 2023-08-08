@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 05:15:34 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/07 05:16:25 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/08 21:59:02 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	pb(t_num_node **a, t_num_node **b)
 {
-	node_maker(a, (*b)->num);
-	free_node(b, 1);
+	t_num_node	*tmp;
+
+	tmp = *a;
+	node_maker(b, (*a)->num);
+	(*a) = (*a)->next;
+	free_node(&tmp, 1);
 	ft_printf("pb\n");
 }
