@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:35:34 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/09 02:15:56 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/09 22:21:22 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,14 @@ void	free_node(t_num_node **a, int b)
 			c = c->prev;
 		while ((*a) != NULL)
 		{
+			c = *a;
 			(*a) = (*a)->next;
 			free(c);
 		}
 	}
 }
 
-int		node_count(t_num_node **a)
+int	node_count(t_num_node **a)
 {
 	t_num_node	*b;
 	int			c;
@@ -68,7 +69,7 @@ int		node_count(t_num_node **a)
 	return (c);
 }
 
-int		find_min_node(t_num_node **a)
+int	find_min_node(t_num_node **a)
 {
 	t_num_node	*b;
 	int			tmp;
