@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   r_node.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 04:55:26 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/11 20:54:10 by adurusoy         ###   ########.fr       */
+/*   Created: 2023/08/11 20:58:00 by adurusoy          #+#    #+#             */
+/*   Updated: 2023/08/11 21:06:02 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 
-void	sa(t_num_node **a)
+void	r_node(t_num_node **a)
 {
-	int		tmp;
-	int		order;
+	t_num_node	*tmp;
+	int			tmp_num;
+	int			tmp_order;
 
-	tmp = (*a)->num;
-	order = (*a)->correct_order;
-	(*a)->num = (*a)->next->num;
-	(*a)->correct_order = (*a)->next->correct_order;
-	(*a)->next->num = tmp;
-	(*a)->next->correct_order = order;
-	ft_printf("sa\n");
+	tmp = *a;
+	tmp_num = tmp->num;
+	tmp_order = tmp->correct_order;
+	while (tmp->next != NULL)
+	{
+		tmp->num = tmp->next->num;
+		tmp->correct_order = tmp->next->correct_order;
+		tmp = tmp->next;
+	}
+	tmp->correct_order = tmp_order;
+	tmp->num = tmp_num;
 }

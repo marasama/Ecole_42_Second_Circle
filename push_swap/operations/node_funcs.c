@@ -6,18 +6,19 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:35:34 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/09 22:21:22 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/11 23:05:27 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 
-void	node_maker(t_num_node **a, int b)
+void	node_maker(t_num_node **a, int b, int d)
 {
 	t_num_node	*c;
 
 	c = (t_num_node *)malloc(sizeof(t_num_node));
 	c->num = b;
+	c->correct_order = d;
 	c->next = *a;
 	c->prev = NULL;
 	if (*a != NULL)
@@ -52,15 +53,13 @@ void	free_node(t_num_node **a, int b)
 	}
 }
 
-int	node_count(t_num_node **a)
+int node_count(t_num_node **a)
 {
 	t_num_node	*b;
 	int			c;
 
 	b = *a;
 	c = 0;
-	while (b->prev != NULL)
-		b = b->prev;
 	while (b != NULL)
 	{
 		c++;
@@ -73,22 +72,21 @@ int	find_min_node(t_num_node **a)
 {
 	t_num_node	*b;
 	int			tmp;
-	int			count;
-	int			return_val;
 
-	count = 0;
-	return_val = 0;
 	b = *a;
 	tmp = b->num;
 	while (b != NULL)
 	{
-		if (b->num < tmp)
-		{
+		if (b->num > tmp)
 			tmp = b->num;
-			return_val = count;
-		}
-		count++;
 		b = b->next;
 	}
-	return (return_val);
+	b = *a;
+	while (b != NULL)
+	{
+		if (b->num < tmp && b->correct_order == 0)
+			tmp = b->num;
+		b = b->next;
+	}
+	return (tmp);
 }

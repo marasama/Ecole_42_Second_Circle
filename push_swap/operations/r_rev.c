@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   r_rev.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 04:55:26 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/11 20:54:10 by adurusoy         ###   ########.fr       */
+/*   Created: 2023/08/11 20:49:37 by adurusoy          #+#    #+#             */
+/*   Updated: 2023/08/11 21:05:46 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 
-void	sa(t_num_node **a)
+void	r_rev(t_num_node **a)
 {
-	int		tmp;
-	int		order;
+	t_num_node	*tmp;
+	int			tmp_num;
+	int			tmp_order;
 
-	tmp = (*a)->num;
-	order = (*a)->correct_order;
-	(*a)->num = (*a)->next->num;
-	(*a)->correct_order = (*a)->next->correct_order;
-	(*a)->next->num = tmp;
-	(*a)->next->correct_order = order;
-	ft_printf("sa\n");
+	tmp = *a;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp_num = tmp->num;
+	tmp_order = tmp->correct_order;
+	while (tmp->prev != NULL)
+	{
+		tmp->num = tmp->prev->num;
+		tmp->correct_order = tmp->prev->correct_order;
+		tmp = tmp->prev;
+	}
+	tmp->correct_order = tmp_order;
+	tmp->num = tmp_num;
 }

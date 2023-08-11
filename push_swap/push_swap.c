@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:31:46 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/09 22:18:53 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/12 00:24:11 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,35 @@ void	check_error(t_num_node **a)
 	exit(1);
 }
 
+void	place_node_order(t_num_node **a)
+{
+	t_num_node	*b;
+	int			c;
+	int			d;
+	int			e;
+
+	d = node_count(a);
+	e = 1;
+	while (e <= d)
+	{
+		b = *a;
+		c = find_min_node(a);
+		while (b != NULL)
+		{
+			if (b->num == c)
+				b->correct_order = e;
+			b = b->next;
+		}
+		e++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_num_node	*a;
-	t_num_node	*b;
 	int			c;
 
 	a = NULL;
-	b = NULL;
 	c = 0;
 	if (argc == 2)
 	{
@@ -41,8 +62,9 @@ int	main(int argc, char **argv)
 	if (!check_int(argv))
 		check_error(NULL);
 	while (argc > c)
-		node_maker(&a, ft_atoi(argv[argc--]));
+		node_maker(&a, ft_atoi(argv[argc--]), 0);
 	if (check_rpt(&a) || check_sort(&a))
 		check_error(&a);
-	start_sorting(&a, &b);
+	place_node_order(&a);
+	start_sorting(&a);
 }

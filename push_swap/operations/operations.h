@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 04:55:43 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/09 00:17:07 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/11 21:05:11 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 
 # include "../ft_printf/ft_printf.h"
 
-typedef struct t_num_node
+typedef struct s_num_node
 {
 	int					num;
-	struct t_num_node	*prev;
-	struct t_num_node	*next;
+	int					correct_order;
+	struct s_num_node	*prev;
+	struct s_num_node	*next;
 }t_num_node;
 
 //node functions
-void	node_maker(t_num_node **a, int b);
+void	node_maker(t_num_node **a, int b, int d);
 void	free_node(t_num_node **a, int b);
 int		node_count(t_num_node **a);
 int		find_min_node(t_num_node **a);
@@ -33,9 +34,11 @@ void	sb(t_num_node **b);
 void	ss(t_num_node **a, t_num_node **b);
 void	pa(t_num_node **a, t_num_node **b);
 void	pb(t_num_node **a, t_num_node **b);
+void	r_node(t_num_node **a);
 void	ra(t_num_node **a);
 void	rb(t_num_node **b);
 void	rr(t_num_node **a, t_num_node **b);
+void	r_rev(t_num_node **a);
 void	rra(t_num_node **a);
 void	rrb(t_num_node **b);
 void	rrr(t_num_node **a, t_num_node **b);

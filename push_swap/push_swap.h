@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:32:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/09 22:04:36 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/11 21:51:19 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
 
 //sorting functions
-void	start_sorting(t_num_node **a, t_num_node **b);
+void	start_sorting(t_num_node **a);
 void	print_node(t_num_node **a);
 #endif
