@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:35:34 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/11 23:05:27 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:19:30 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,19 @@ int	find_min_node(t_num_node **a)
 		b = b->next;
 	}
 	return (tmp);
+}
+
+t_num_node	*get_nth_node(t_num_node **a, int b)
+{
+	t_num_node	*c;
+	int			d;
+
+	c = (*a);
+	d = 1;
+	while (c->next != NULL && d < b)
+	{
+		c = c->next;
+		d++;
+	}
+	return (c);
 }

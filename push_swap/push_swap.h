@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:32:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/11 21:51:19 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/13 23:46:35 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
 
 //sorting functions
-void	start_sorting(t_num_node **a);
+void	start_sorting(t_num_node **a, int node_size);
 void	print_node(t_num_node **a);
 #endif

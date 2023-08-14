@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 04:55:43 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/11 21:05:11 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/13 21:58:33 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ typedef struct s_num_node
 }t_num_node;
 
 //node functions
-void	node_maker(t_num_node **a, int b, int d);
-void	free_node(t_num_node **a, int b);
-int		node_count(t_num_node **a);
-int		find_min_node(t_num_node **a);
+void		node_maker(t_num_node **a, int b, int d);
+void		free_node(t_num_node **a, int b);
+int			node_count(t_num_node **a);
+int			find_min_node(t_num_node **a);
+t_num_node	*get_nth_node(t_num_node **a, int b);
 //operation functions
 void	sa(t_num_node **a);
 void	sb(t_num_node **b);
