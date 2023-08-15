@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ra.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 05:48:14 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/11 20:58:55 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/15 02:58:19 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	ra(t_num_node **a)
 {
-	r_node(a);
-	ft_printf("ra\n");
+	if (node_count(a) == 2)
+		sa(a);
+	else
+	{
+		r_node(a);
+		ft_printf("ra\n");
+	}
 }

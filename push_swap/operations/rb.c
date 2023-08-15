@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 05:54:35 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/11 20:59:24 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/15 02:58:17 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	rb(t_num_node **b)
 {
-	r_node(b);
-	ft_printf("rb\n");
+	if (node_count(b) == 2)
+		sb(b);
+	else
+	{
+		r_node(b);
+		ft_printf("rb\n");
+	}
 }
