@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 04:06:02 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/15 02:55:40 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/15 07:14:29 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_node(t_num_node **a)
 	}
 }
 
-int		cost_calc(t_num_node **a, int order, int node_size, int option)
+int	cost_calc(t_num_node **a, int order, int node_size, int option)
 {
 	t_num_node	*tmp;
 	int			prev_cost;
@@ -38,7 +38,6 @@ int		cost_calc(t_num_node **a, int order, int node_size, int option)
 		prev_cost++;
 		tmp = tmp->next;
 	}
-	tmp = *a;
 	while (tmp->correct_order != order + 1 && order + 1 <= node_size && option == 2)
 	{
 		next_cost++;
@@ -79,6 +78,7 @@ int	compare_numbers(int a, int b)
 
 void	start_sorting(t_num_node **a, int node_size)
 {
+	t_num_node	*tmp;
 	t_num_node	*b;
 	int			c;
 	int			cost1;
@@ -89,19 +89,23 @@ void	start_sorting(t_num_node **a, int node_size)
 	c = node_size;
 	while (c > 0)
 	{
-		cost1 = 2147483647;
-		cost2 = 2147483647;
-		if (b->correct_order - 1 != 0)
+		tmp = get_last_node(&b);
+		if (tmp->correct_order == node_size)
+			cost2 = 2147483647;
+		else
+			cost2 = cost_calc(a, tmp->correct_order, node_size, 2);
+		if (b->correct_order == 1)
+			cost1 = 2147483647;
+		else
 			cost1 = cost_calc(a, b->correct_order, node_size, 1);
-		if (get_last_node(&b)->correct_order + 1 <= node_size)
-			cost2 = cost_calc(a, get_last_node(&b)->correct_order, node_size, 2);
+		ft_printf("%d - %d\n", cost1, cost2);
 		if (cost1 == 0 || cost2 == 0)
 			pb(a, &b);
-		else if (compare_numbers(cost1, cost2))
+		else if (compare_numbers(cost2, cost1))
 		{
-			while ((*a)->correct_order != b->correct_order - 1)
+			while ((*a)->correct_order != tmp->correct_order + 1)
 			{
-				if (cost1 < 0)
+				if (cost2 < 0)
 					rra(a);
 				else
 					ra(a);
@@ -111,9 +115,9 @@ void	start_sorting(t_num_node **a, int node_size)
 		}
 		else
 		{
-			while ((*a)->correct_order != get_last_node(&b)->correct_order + 1)
+			while ((*a)->correct_order != b->correct_order - 1)
 			{
-				if (cost2 < 0)
+				if (cost1 < 0)
 					rra(a);
 				else
 					ra(a);
