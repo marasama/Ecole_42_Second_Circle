@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 04:06:02 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/17 07:37:56 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/17 12:58:13 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	print_node(t_num_node **a)
 	tmp = *a;
 	while (tmp != NULL)
 	{
-		ft_printf("%d\n", tmp->correct_order);
-		tmp = tmp->next;
+		ft_printf("%d\n", tmp->num);
+		tmp = tmp->prev;
 	}
 }
 
@@ -32,9 +32,9 @@ int	cost_calc(t_num_node **a, int order, int node_size, int option)
 	tmp = *a;
 	cost = 0;
 	if (order == node_size && option == 2)
-		order = 0;
+		return (2147483647);
 	else if (order == 1 && option == 1)
-		order = node_size + 1;
+		return (2147483647);
 	while (tmp->correct_order != order - 1 && option == 1)
 	{
 		cost++;
@@ -58,7 +58,7 @@ int	compare_numbers(t_num_node **a, t_num_node **b, int node_size)
 	int			cost2;
 
 	tmp = get_last_node(b);
-	cost1 = cost_calc(a, (*b)->correct_order, node_size, 1);
+	cost1 = cost_calc(a, (*b)->correct_order, node_size, 1) + 1;
 	cost2 = cost_calc(a, tmp->correct_order, node_size, 2);
 	if (cost1 == 0 || cost2 == 0)
 		return (0);
@@ -74,10 +74,6 @@ int	compare_numbers(t_num_node **a, t_num_node **b, int node_size)
 
 void	push_b(t_num_node **a, t_num_node **b, int order, int option)
 {
-	if (order == node_count(a) + 1)
-		order = 1;
-	if (order == 0)
-		order = node_count(a);
 	while ((*a)->correct_order != order)
 	{
 		if (option < 0)
@@ -86,7 +82,7 @@ void	push_b(t_num_node **a, t_num_node **b, int order, int option)
 			ra(a);
 	}
 	pb(a, b);
-	if (option % 2 == 0)
+	if (option % 2 != 0)
 		rb(b);
 }
 
@@ -98,16 +94,26 @@ void	start_sorting(t_num_node **a, int node_size)
 
 	b = NULL;
 	pb(a, &b);
-	c = node_size;
+	c = node_count(a) - 1;
 	while (c > 0)
 	{
-		cost = compare_numbers(a, &b, node_size);
+		cost = compare_numbers(a, &b, node_count(a));
 		if (cost == 0)
 			pb(a, &b);
 		else if (cost % 2 == 0)
-			push_b(a, &b, get_last_node(&b)->correct_order + 1, cost);
+		{
+			if (get_last_node(&b)->correct_order == node_size)
+				push_b(a, &b, 1, cost);
+			else
+				push_b(a, &b, get_last_node(&b)->correct_order + 1, cost);
+		}
 		else
-			push_b(a, &b, b->correct_order - 1, cost);
+		{
+			if (b->correct_order == 1)
+				push_b(a, &b, node_size, cost);
+			else
+				push_b(a, &b, b->correct_order - 1, cost);
+		}
 		c--;
 	}
 }

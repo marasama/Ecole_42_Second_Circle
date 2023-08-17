@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 20:49:37 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/17 05:04:56 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/17 09:07:12 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	r_rev(t_num_node **a)
 		tmp = tmp->next;
 	tmp_num = tmp->num;
 	tmp_order = tmp->correct_order;
-	while (tmp->prev != NULL)
+	while (tmp->num != (*a)->num)
 	{
 		tmp->num = tmp->prev->num;
 		tmp->correct_order = tmp->prev->correct_order;

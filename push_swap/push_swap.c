@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:31:46 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/14 23:07:02 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/17 07:59:37 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ int	main(int argc, char **argv)
 		check_error(&a);
 	place_node_order(&a);
 	start_sorting(&a, node_count(&a));
+	free_node(&a, 2);
 }
