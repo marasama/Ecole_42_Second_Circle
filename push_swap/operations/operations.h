@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 04:55:43 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/13 21:58:33 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/15 22:33:39 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		node_maker(t_num_node **a, int b, int d);
 void		free_node(t_num_node **a, int b);
 int			node_count(t_num_node **a);
 int			find_min_node(t_num_node **a);
-t_num_node	*get_nth_node(t_num_node **a, int b);
+t_num_node	*get_last_node(t_num_node **b);
 //operation functions
 void	sa(t_num_node **a);
 void	sb(t_num_node **b);

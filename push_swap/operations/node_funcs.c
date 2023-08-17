@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:35:34 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/13 09:19:30 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/17 05:02:10 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,12 @@ int	find_min_node(t_num_node **a)
 	return (tmp);
 }
 
-t_num_node	*get_nth_node(t_num_node **a, int b)
+t_num_node	*get_last_node(t_num_node **b)
 {
-	t_num_node	*c;
-	int			d;
+	t_num_node *tmp;
 
-	c = (*a);
-	d = 1;
-	while (c->next != NULL && d < b)
-	{
-		c = c->next;
-		d++;
-	}
-	return (c);
+	tmp = *b;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	return (tmp);
 }
