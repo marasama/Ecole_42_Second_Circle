@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:08:18 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/07 00:25:31 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/17 18:14:18 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ int	ft_atoi(const char *str)
 	if (str[d] == '-')
 		c = -c;
 	return (c);
+}
+
+int	ft_abs(int a)
+{
+	if (a < 0)
+		return (-a);
+	else
+		return (a);
 }
