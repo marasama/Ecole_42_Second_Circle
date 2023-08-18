@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 04:55:26 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/17 05:06:19 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:50:23 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sa(t_num_node **a)
 	int		order;
 
 	if (node_count(a) == 1)
-		return;
+		return ;
 	tmp = (*a)->num;
 	order = (*a)->correct_order;
 	(*a)->num = (*a)->next->num;

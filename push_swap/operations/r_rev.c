@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   r_rev.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 20:49:37 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/17 09:07:12 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:51:00 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	r_rev(t_num_node **a)
 	int			tmp_order;
 
 	if (node_count(a) == 1)
-		return;
+		return ;
 	tmp = *a;
 	while (tmp->next != NULL)
 		tmp = tmp->next;

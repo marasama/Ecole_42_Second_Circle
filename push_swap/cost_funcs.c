@@ -3,64 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cost_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:50:49 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/17 18:26:10 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/18 21:30:45 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_min_max_order(t_num_node **b, int option)
-{
-	t_num_node	*tmp;
-	int			tmp_num;
-
-	tmp = *b;
-	tmp_num = tmp->correct_order;
-	tmp = tmp->next;
-	while (tmp != NULL && option == 1)
-	{
-		if (tmp->correct_order > tmp_num)
-			tmp_num = tmp->correct_order;
-		tmp = tmp->next;
-	}
-	while (tmp != NULL && option == 2)
-	{
-		if (tmp->correct_order < tmp_num)
-			tmp_num = tmp->correct_order;
-		tmp = tmp->next;
-	}
-	return (tmp_num);
-}
-
-int	min_max_cost_calc(t_num_node **a, int order)
-{
-	t_num_node	*tmp;
-	int			tmp_num;
-	int			cost;
-
-	tmp = *a;
-	cost = 0;
-	tmp_num = 0;
-	if (order > get_min_max_order(a, 1) || order < get_min_max_order(a, 2))
-	{
-		while (tmp != get_min_max_order(a, 1))
-		{
-			tmp = tmp->next;
-			cost++;
-		}
-	}
-	if (cost > node_count(a) - cost)
-		return (cost - node_count(a));
-	else
-		return (cost);
-}
-
 int	get_place_cost(t_num_node **b, int order)
 {
-	t_num_node *tmp;
+	t_num_node	*tmp;
 	int			tmp_num;
 	int			tmp_cost;
 	int			cost;
@@ -99,26 +53,45 @@ int	cost_b(t_num_node **b, int order)
 		return (cost);
 }
 
-int	cost_calcutor(t_num_node **a, t_num_node **b, int option)
+int	cost_a(t_num_node **a, int order)
+{
+	t_num_node	*tmp;
+	int			cost;
+
+	cost = 0;
+	tmp = *a;
+	while (tmp->correct_order != order)
+	{
+		cost++;
+		tmp = tmp->next;
+	}
+	if (cost > node_count(a) - cost)
+		return (node_count(a) - cost);
+	else
+		return (cost);
+}
+
+int	cost_calculator(t_num_node **a, t_num_node **b, int option)
 {
 	t_num_node	*tmp;
 	int			cost;
 	int			order;
-	int			cost_a;
+	int			tmp_cost_a;
+	int			tmp_cost_b;
 
 	tmp = *a;
 	cost = 2147483647;
 	order = 0;
-	cost_a = 0;
 	while (tmp != NULL)
 	{
-		if (cost_a + ft_abs(cost_b(b, tmp->correct_order)) < cost)
+		tmp_cost_a = ft_abs(cost_a(a, tmp->correct_order));
+		tmp_cost_b = ft_abs(cost_b(b, tmp->correct_order));
+		if (tmp_cost_a + tmp_cost_b < cost)
+		{
 			order = tmp->correct_order;
-		cost_a++;
-		if (cost_a == (node_count(a) / 2));
-			cost_a = 0;
+			cost = tmp_cost_a + tmp_cost_b;
+		}
 		tmp = tmp->next;
 	}
-	if (option == 1)
-		return (order);
+	return (ret_calc(order, cost_a(a, order), cost_b(b, order), option));
 }

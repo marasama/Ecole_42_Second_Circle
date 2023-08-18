@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 01:35:34 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/17 09:00:37 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:51:49 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	free_node(t_num_node **a, int b)
 	}
 }
 
-int node_count(t_num_node **a)
+int	node_count(t_num_node **a)
 {
 	t_num_node	*b;
 	int			c;
@@ -93,7 +93,7 @@ int	find_min_node(t_num_node **a)
 
 t_num_node	*get_last_node(t_num_node **b)
 {
-	t_num_node *tmp;
+	t_num_node	*tmp;
 
 	tmp = *b;
 	while (tmp->next != NULL)

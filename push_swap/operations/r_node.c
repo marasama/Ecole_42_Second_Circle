@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   r_node.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 20:58:00 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/17 05:04:45 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:50:54 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	r_node(t_num_node **a)
 	int			tmp_order;
 
 	if (node_count(a) == 1)
-		return;
+		return ;
 	tmp = *a;
 	tmp_num = tmp->num;
 	tmp_order = tmp->correct_order;

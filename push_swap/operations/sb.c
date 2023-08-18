@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 05:00:46 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/17 05:06:40 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:50:29 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sb(t_num_node **b)
 	int		order;
 
 	if (node_count(b) == 1)
-		return;
+		return ;
 	tmp = (*b)->num;
 	order = (*b)->correct_order;
 	(*b)->num = (*b)->next->num;

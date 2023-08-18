@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ss.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 05:02:17 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/17 05:06:28 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/18 19:50:32 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ss(t_num_node **a, t_num_node **b)
 	int		order;
 
 	if (node_count(a) == 1)
-		return;
+		return ;
 	tmp = (*a)->num;
 	order = (*a)->correct_order;
 	(*a)->num = (*a)->next->num;
