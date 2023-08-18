@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:32:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/18 21:25:40 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/18 22:48:10 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int		ft_abs(int a);
 
 //sorting functions
 void	start_sorting(t_num_node **a);
+void	simple_sorts(t_num_node **a);
+void	triple_sort(t_num_node **a);
 
 //cost calculation functions
 int		get_min_max_order(t_num_node **b, int option);
