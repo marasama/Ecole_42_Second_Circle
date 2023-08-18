@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost_funcs2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 20:44:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/18 21:32:13 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 00:24:01 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,10 @@ int	get_min_max_order(t_num_node **b, int option)
 int	min_max_cost_calc(t_num_node **a, int order)
 {
 	t_num_node	*tmp;
-	int			tmp_num;
 	int			cost;
 
 	tmp = *a;
 	cost = 0;
-	tmp_num = 0;
 	if (order > get_min_max_order(a, 1) || order < get_min_max_order(a, 2))
 	{
 		while (tmp->correct_order != get_min_max_order(a, 1))
@@ -56,14 +54,4 @@ int	min_max_cost_calc(t_num_node **a, int order)
 		return (cost - node_count(a));
 	else
 		return (cost);
-}
-
-int	ret_calc(int order, int cost_a, int cost_b, int option)
-{
-	if (option == 1)
-		return (order);
-	if (option == 2)
-		return (cost_a);
-	else
-		return (cost_b);
 }

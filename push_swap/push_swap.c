@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:31:46 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/18 22:50:27 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 01:04:36 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,16 @@ int	main(int argc, char **argv)
 			argc++;
 		c = -1;
 	}
-	argc--;
 	if (!check_int(argv))
 		check_error(NULL);
-	while (argc > c)
-		node_maker(&a, ft_atoi(argv[argc--]), 0);
+	while (--argc > c)
+		node_maker(&a, ft_atoi(argv[argc]), 0);
 	if (check_rpt(&a) || check_sort(&a))
 		check_error(&a);
 	place_node_order(&a);
 	if (node_count(&a) <= 5)
 		simple_sorts(&a);
 	else
-		start_sorting(&a);
+		start_sorting(&a, node_count(&a));
 	free_node(&a, 2);
 }
