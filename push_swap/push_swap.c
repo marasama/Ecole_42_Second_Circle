@@ -3,20 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:31:46 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 01:04:36 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 05:43:43 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_error(t_num_node **a)
+void	free_array(char **a, int b)
+{
+	int	i;
+
+	i = 0;
+	if (b == -1)
+	{
+		while (a[i])
+		{
+			free(a[i]);
+			i++;
+		}
+		free(a);
+	}
+}
+
+void	check_error(t_num_node **a, char **b, int option, int c)
 {
 	if (a != NULL)
 		free_node(a, 2);
-	ft_printf("Error\n");
+	if (option == 1 || option == 2)
+		free_array(b, c);
+	if (option == 2)
+		ft_printf("Error\n");
 	exit(1);
 }
 
@@ -58,16 +77,16 @@ int	main(int argc, char **argv)
 			argc++;
 		c = -1;
 	}
-	if (!check_int(argv))
-		check_error(NULL);
+	if (!check_int(argv) || argc == 1)
+		check_error(NULL, argv, argc, c);
 	while (--argc > c)
 		node_maker(&a, ft_atoi(argv[argc]), 0);
-	if (check_rpt(&a) || check_sort(&a))
-		check_error(&a);
+	if (check_rpt(&a))
+		check_error(&a, argv, 2, c);
+	if (check_sort(&a))
+		return (0);
 	place_node_order(&a);
-	if (node_count(&a) <= 5)
-		simple_sorts(&a);
-	else
-		start_sorting(&a, node_count(&a));
+	select_sorts(&a, node_count(&a));
 	free_node(&a, 2);
+	free_array(argv, c);
 }
