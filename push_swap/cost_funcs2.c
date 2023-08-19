@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost_funcs2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 20:44:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 00:24:01 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 04:00:36 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,28 @@ int	min_max_cost_calc(t_num_node **a, int order)
 		return (cost - node_count(a));
 	else
 		return (cost);
+}
+
+int	get_place_cost(t_num_node **b, int order)
+{
+	t_num_node	*tmp;
+	int			tmp_num;
+	int			tmp_cost;
+	int			cost;
+
+	tmp = *b;
+	tmp_num = 0;
+	cost = 0;
+	tmp_cost = 0;
+	while (tmp != NULL)
+	{
+		if (tmp->correct_order > tmp_num && tmp->correct_order < order)
+		{
+			tmp_num = tmp->correct_order;
+			tmp_cost = cost;
+		}
+		cost++;
+		tmp = tmp->next;
+	}
+	return (tmp_cost);
 }

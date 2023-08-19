@@ -3,38 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cost_funcs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:50:49 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 00:46:33 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 04:09:44 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	get_place_cost(t_num_node **b, int order)
-{
-	t_num_node	*tmp;
-	int			tmp_num;
-	int			tmp_cost;
-	int			cost;
-
-	tmp = *b;
-	tmp_num = 0;
-	cost = 0;
-	tmp_cost = 0;
-	while (tmp != NULL)
-	{
-		if (tmp->correct_order > tmp_num && tmp->correct_order < order)
-		{
-			tmp_num = tmp->correct_order;
-			tmp_cost = cost;
-		}
-		cost++;
-		tmp = tmp->next;
-	}
-	return (tmp_cost);
-}
 
 int	cost_b(t_num_node **b, int order)
 {
@@ -69,25 +45,72 @@ int	cost_a(t_num_node **a, int order)
 		return (cost);
 }
 
+int	r_cost(int a, int b)
+{
+	int		cost;
+
+	cost = 0;
+	while (a < 0 && b < 0)
+	{
+		cost++;
+		a++;
+		b++;
+	}
+	while (b < 0)
+	{
+		cost++;
+		b++;
+	}
+	while (a < 0)
+	{
+		cost++;
+		a++;
+	}
+	return (cost);
+}
+
+int	rr_cost(int a, int b)
+{
+	int		cost;
+
+	cost = 0;
+	while (a > 0 && b > 0)
+	{
+		cost++;
+		a--;
+		b--;
+	}
+	while (b > 0)
+	{
+		cost++;
+		b--;
+	}
+	while (a > 0)
+	{
+		cost++;
+		a--;
+	}
+	return (cost);
+}
+
 int	cost_calculator(t_num_node **a, t_num_node **b, int option)
 {
 	t_num_node	*tmp;
 	int			cost;
 	int			order;
-	int			tmp_cost_a;
-	int			tmp_cost_b;
+	int			a_cost;
+	int			b_cost;
 
 	tmp = *a;
 	cost = 2147483647;
-	order = 0;
 	while (tmp != NULL)
 	{
-		tmp_cost_a = ft_abs(cost_a(a, tmp->correct_order));
-		tmp_cost_b = ft_abs(cost_b(b, tmp->correct_order));
-		if (tmp_cost_a + tmp_cost_b < cost)
+		a_cost = cost_a(a, tmp->correct_order);
+		b_cost = cost_b(b, tmp->correct_order);
+		if (r_cost(a_cost, b_cost) + rr_cost(a_cost, b_cost) < cost)
 		{
 			order = tmp->correct_order;
-			cost = tmp_cost_a + tmp_cost_b;
+			cost = r_cost(a_cost, b_cost) + rr_cost(a_cost, b_cost);
 		}
 		tmp = tmp->next;
 	}

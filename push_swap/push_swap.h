@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:32:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 02:19:43 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 03:50:58 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int		ft_abs(int a);
 void	start_sorting(t_num_node **a, int node_size);
 void	simple_sorts(t_num_node **a);
 void	triple_sort(t_num_node **a);
-void	quadra_sort(t_num_node **a);
 
 //cost calculation functions
 int		get_min_max_order(t_num_node **b, int option);
