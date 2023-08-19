@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:32:21 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 05:05:19 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 09:05:53 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strlen(char *a);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
-int		ft_abs(int a);
 
 //sorting functions
 void	select_sorts(t_num_node **a, int node_size);
-void	start_sorting(t_num_node **a, int node_size);
+void	start_sorting(t_num_node **a);
 void	triple_sort(t_num_node **a);
+void	quadra_sort(t_num_node **a);
 
 //cost calculation functions
 int		get_min_max_order(t_num_node **b, int option);
