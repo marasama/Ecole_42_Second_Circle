@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   rb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 05:54:35 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/15 02:58:17 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 21:12:04 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 
-void	rb(t_num_node **b)
+void	rb(t_num_node **b, int option)
 {
 	if (node_count(b) == 2)
-		sb(b);
+		sb(b, 1);
 	else
 	{
 		r_node(b);
-		ft_printf("rb\n");
+		if (option != 0)
+			ft_printf("rb\n");
 	}
 }

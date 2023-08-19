@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_funcs2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 00:26:10 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 09:12:57 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 21:12:38 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	select_sorts(t_num_node **a, int node_size)
 	if (node_size == 2)
 	{
 		if ((*a)->num > (*a)->next->num)
-			sa(a);
+			sa(a, 1);
 	}
 	else if (node_size == 3)
 		triple_sort(a);
@@ -35,20 +35,20 @@ void	triple_sort(t_num_node **a)
 	{
 		if ((*a)->next->num > (*a)->next->next->num)
 		{
-			ra(a);
-			sa(a);
+			ra(a, 1);
+			sa(a, 1);
 		}
 		else if ((*a)->num < (*a)->next->next->num)
-			sa(a);
+			sa(a, 1);
 		else
-			ra(a);
+			ra(a, 1);
 	}
 	else if ((*a)->num < (*a)->next->num)
 	{
 		if ((*a)->next->num > (*a)->next->next->num)
-			rra(a);
+			rra(a, 1);
 		if (!check_sort(a))
-			sa(a);
+			sa(a, 1);
 	}
 }
 
@@ -58,7 +58,7 @@ void	quadra_sort(t_num_node **a)
 	int			cost;
 
 	b = NULL;
-	pb(a, &b);
+	pb(a, &b, 1);
 	triple_sort(a);
 	if (b->correct_order == 4)
 		cost = cost_a(a, 1);
@@ -66,15 +66,15 @@ void	quadra_sort(t_num_node **a)
 		cost = cost_a(a, b->correct_order + 1);
 	while (cost < 0)
 	{
-		rra(a);
+		rra(a, 1);
 		cost++;
 	}
 	while (cost > 0)
 	{
-		ra(a);
+		ra(a, 1);
 		cost--;
 	}
-	pa(a, &b);
+	pa(a, &b, 1);
 	while ((*a)->correct_order != 1)
-		ra(a);
+		ra(a, 1);
 }

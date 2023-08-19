@@ -6,11 +6,12 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:02:16 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 05:35:20 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/20 00:09:25 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "checker.h"
 
 int	atoi_check(char *s)
 {
@@ -24,14 +25,12 @@ int	atoi_check(char *s)
 	return (b);
 }
 
-int	check_int(char **a)
+int	check_int(char **a, int b)
 {
-	int		b;
 	int		c;
 	int		d;
 
-	b = 1;
-	while (a[b])
+	while (a[++b])
 	{
 		c = ft_strlen(a[b]);
 		d = atoi_check(a[b]);
@@ -48,7 +47,6 @@ int	check_int(char **a)
 		if (a[b][0] != '+' && a[b][0] != '-' && d == 10)
 			if (ft_strncmp(a[b], "2147483647", d) < 0)
 				return (0);
-		b++;
 	}
 	return (1);
 }

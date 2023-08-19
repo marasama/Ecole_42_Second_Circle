@@ -6,14 +6,15 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 06:06:47 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/11 20:52:29 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 21:07:59 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 
-void	rrb(t_num_node **b)
+void	rrb(t_num_node **b, int option)
 {
 	r_rev(b);
-	ft_printf("rrb\n");
+	if (option != 0)
+		ft_printf("rrb\n");
 }

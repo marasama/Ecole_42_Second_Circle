@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr.c                                              :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 06:07:17 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 21:08:20 by adurusoy         ###   ########.fr       */
+/*   Created: 2022/10/07 23:27:19 by adurusoy          #+#    #+#             */
+/*   Updated: 2023/08/19 20:29:43 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "libft.h"
 
-void	rrr(t_num_node **a, t_num_node **b, int option)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	r_rev(a);
-	r_rev(b);
-	if (option != 0)
-		ft_printf("rrr\n");
+	if (n == 0)
+		return (0);
+	while (n > 1 && *s1 && (unsigned char)*s1 == (unsigned char)*s2)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

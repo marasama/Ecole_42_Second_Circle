@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr.c                                              :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 06:07:17 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 21:08:20 by adurusoy         ###   ########.fr       */
+/*   Created: 2023/01/07 09:52:33 by adurusoy          #+#    #+#             */
+/*   Updated: 2023/01/07 09:52:34 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "libft.h"
 
-void	rrr(t_num_node **a, t_num_node **b, int option)
+void	*ft_calloc(size_t count, size_t size)
 {
-	r_rev(a);
-	r_rev(b);
-	if (option != 0)
-		ft_printf("rrr\n");
+	void	*c;
+
+	c = (void *)malloc(count * size);
+	if (!c)
+		return (NULL);
+	ft_bzero(c, count * size);
+	return (c);
 }

@@ -6,13 +6,13 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 04:55:26 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/18 19:50:23 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/19 21:08:40 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operations.h"
 
-void	sa(t_num_node **a)
+void	sa(t_num_node **a, int option)
 {
 	int		tmp;
 	int		order;
@@ -25,5 +25,6 @@ void	sa(t_num_node **a)
 	(*a)->correct_order = (*a)->next->correct_order;
 	(*a)->next->num = tmp;
 	(*a)->next->correct_order = order;
-	ft_printf("sa\n");
+	if (option != 0)
+		ft_printf("sa\n");
 }

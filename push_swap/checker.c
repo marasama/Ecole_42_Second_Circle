@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 23:31:46 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/20 00:22:46 by adurusoy         ###   ########.fr       */
+/*   Created: 2023/08/19 20:07:47 by adurusoy          #+#    #+#             */
+/*   Updated: 2023/08/20 00:22:38 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	free_array(char **a, int b)
 {
@@ -94,7 +94,7 @@ int	main(int argc, char **argv)
 	if (check_sort(&a))
 		return (0);
 	place_node_order(&a);
-	select_sorts(&a, node_count(&a));
+	start_operations(&a);
 	free_node(&a, 2);
 	free_array(argv, c);
 }

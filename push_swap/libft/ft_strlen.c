@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr.c                                              :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 06:07:17 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 21:08:20 by adurusoy         ###   ########.fr       */
+/*   Created: 2023/08/06 21:41:46 by adurusoy          #+#    #+#             */
+/*   Updated: 2023/08/19 20:29:36 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "libft.h"
 
-void	rrr(t_num_node **a, t_num_node **b, int option)
+int	ft_strlen(char *a)
 {
-	r_rev(a);
-	r_rev(b);
-	if (option != 0)
-		ft_printf("rrr\n");
+	int	b;
+
+	if (!a)
+		return (0);
+	b = 0;
+	while (a[b])
+		b++;
+	return (b);
 }

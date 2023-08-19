@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr.c                                              :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 06:07:17 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/19 21:08:20 by adurusoy         ###   ########.fr       */
+/*   Created: 2022/10/07 22:31:53 by adurusoy          #+#    #+#             */
+/*   Updated: 2023/01/23 19:34:47 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "libft.h"
 
-void	rrr(t_num_node **a, t_num_node **b, int option)
+char	*ft_strchr(const char *s, int c)
 {
-	r_rev(a);
-	r_rev(b);
-	if (option != 0)
-		ft_printf("rrr\n");
+	int		d;
+	char	e;
+	char	*f;
+
+	e = (char)c;
+	f = (char *)s;
+	d = 0;
+	while (f[d] != e && s[d])
+	{
+		d++;
+	}
+	if (s[d] == e)
+	{
+		return (&f[d]);
+	}
+	return (NULL);
 }
