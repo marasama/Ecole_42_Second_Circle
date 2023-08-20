@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:31:46 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/20 00:22:46 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/20 04:47:40 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (argc == 2)
 		argv = split_args(argv[1], &argc, &c);
-	if (!check_int(argv, c))
+	if (!(check_int(argv, c)))
 		check_error(NULL, argv, c, 2);
 	while (--argc > c)
 		node_maker(&a, ft_atoi(argv[argc]), 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 20:13:07 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/20 00:19:43 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/20 04:34:07 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	swap_opr(t_num_node **a, t_num_node **b, char *operation)
 	else if (operation[1] == 'b')
 		sb(b, 0);
 	else if (operation[1] == 'a')
-		sa(b, 0);
+		sa(a, 0);
 }
 
 void	push_opr(t_num_node **a, t_num_node **b, char *operation)
@@ -88,7 +88,7 @@ void	rotate_opr(t_num_node **a, t_num_node **b, char *operation)
 	if (operation[1] == 'a')
 		ra(a, 0);
 	else if (operation[1] == 'b')
-		rb(a, 0);
+		rb(b, 0);
 	else if (operation[1] == 'r')
 	{
 		if (operation[2] == '\0')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_funcs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:02:16 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/20 00:09:25 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/20 04:54:30 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,14 @@ int	check_int(char **a, int b)
 
 	while (a[++b])
 	{
+		if (a[b][0] == '\0')
+			return (0);
 		c = ft_strlen(a[b]);
 		d = atoi_check(a[b]);
-		if (c != d)
+		if (c != d || d > 11)
 			return (0);
-		if (a[b][0] != '+' && a[b][0] != '-' && c > 11)
+		if (ft_atoi(a[b]) < -2147483648 || ft_atoi(a[b]) > 2147483647)
 			return (0);
-		if (a[b][0] == '+' && d == 11)
-			if (ft_strncmp(a[b], "+2147483647", d) < 0)
-				return (0);
-		if ((a[b][0] == '-' && d == 11))
-			if (ft_strncmp(a[b], "-2147483648", d) < 0)
-				return (0);
-		if (a[b][0] != '+' && a[b][0] != '-' && d == 10)
-			if (ft_strncmp(a[b], "2147483647", d) < 0)
-				return (0);
 	}
 	return (1);
 }
