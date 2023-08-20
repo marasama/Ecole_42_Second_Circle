@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 20:07:47 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/20 00:22:38 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/20 05:50:21 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	main(int argc, char **argv)
 	if (check_rpt(&a))
 		check_error(&a, argv, c, 2);
 	if (check_sort(&a))
-		return (0);
+		check_error(&a, argv, c, 1);
 	place_node_order(&a);
 	start_operations(&a);
 	free_node(&a, 2);

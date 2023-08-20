@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:08:18 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/20 04:41:59 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/20 05:23:47 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 long long int	ft_atoi(const char *str)
 {
-	int		b;
-	long long int		c;
-	int		d;
+	long long int	c;
+	int				b;
+	int				d;
 
 	b = 0;
 	c = 0;

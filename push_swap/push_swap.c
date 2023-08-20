@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:31:46 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/20 04:47:40 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/20 05:39:21 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	main(int argc, char **argv)
 	if (check_rpt(&a))
 		check_error(&a, argv, c, 2);
 	if (check_sort(&a))
-		return (0);
+		check_error(&a, argv, c, 1);
 	place_node_order(&a);
 	select_sorts(&a, node_count(&a));
 	free_node(&a, 2);
