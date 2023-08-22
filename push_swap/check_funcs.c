@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_funcs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
+/*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 21:02:16 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/22 18:47:32 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/22 19:37:45 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	atoi_check(char *s)
 		b++;
 	while (s[b] < 58 && s[b] > 47)
 		b++;
-	if (b == 1 && (s[b] == '+' || s[b] == '-'))
+	if (b == 1 && (s[0] == '+' || s[0] == '-'))
 		return (0);
 	return (b);
 }
@@ -32,12 +32,12 @@ int	check_int(char **a, int b)
 	int		c;
 	int		d;
 
-	if (a[++b] == '\0')
+	if (!a[++b])
 		return (0);
 	b--;
 	while (a[++b])
 	{
-		if (a[b][0] == '\0')
+		if (!a[b][0])
 			return (0);
 		c = ft_strlen(a[b]);
 		d = atoi_check(a[b]);
