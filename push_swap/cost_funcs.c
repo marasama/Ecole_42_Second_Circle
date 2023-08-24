@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:50:49 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/08/24 13:15:35 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/08/24 13:20:18 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	cost_a(t_num_node **a, int order)
 		return (cost);
 }
 
-int	rr_cost(int a, int b)
+int	r_cost(int a, int b)
 {
 	int		cost;
 
@@ -69,7 +69,7 @@ int	rr_cost(int a, int b)
 	return (cost);
 }
 
-int	r_cost(int a, int b)
+int	rr_cost(int a, int b)
 {
 	int		cost;
 
