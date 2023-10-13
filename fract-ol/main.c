@@ -6,7 +6,7 @@
 /*   By: adurusoy <adurusoy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 04:50:26 by adurusoy          #+#    #+#             */
-/*   Updated: 2023/10/13 04:50:28 by adurusoy         ###   ########.fr       */
+/*   Updated: 2023/10/13 09:53:26 by adurusoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	menu(t_t *t)
 		while (++i < 1000)
 		{
 			t->index = (j * 1000 * 4) + (i * 4);
-			t->ch[t->index] = 189;
-			t->ch[t->index + 1] = 87;
-			t->ch[t->index + 2] = 54;
-			t->ch[t->index + 3] = 0;
+			t->ch[t->index] = 42;
+			t->ch[t->index + 1] = 187;
+			t->ch[t->index + 2] = 19;
+			t->ch[t->index + 3] = 110;
 		}
 	}
 	mlx_put_image_to_window(t->ptr, t->win, t->image, 0, 0);
@@ -54,9 +54,9 @@ void	string_put(t_t *t)
 	mlx_string_put(t->ptr, t->win, 635, 260, 0xf7b079,
 		"           BUTTON (enter) ");
 	mlx_string_put(t->ptr, t->win, 650, 300, 0xFFFFFF,
-		"--------RESTART FRACTAL-------");
-	mlx_string_put(t->ptr, t->win, 635, 340, 0xf7b079,
-		"           BUTTON (0) ");
+		"--------FRACTAL NAME-------");
+	mlx_string_put(t->ptr, t->win, 720, 340, 0xf70079,
+		t->name);
 	mlx_string_put(t->ptr, t->win, 650, 380, 0xe13661,
 		"-------------AUTHOR-----------");
 	mlx_string_put(t->ptr, t->win, 650, 420, 0x2AB613,
